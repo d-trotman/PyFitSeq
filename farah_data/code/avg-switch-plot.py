@@ -183,8 +183,8 @@ if __name__ == "__main__":
     switch_file = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/env_specific/results_Switch_rep1_FitSeq.csv"
     
     # Output directory
-    output_dir = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/"
-    output_file = os.path.join(output_dir, "avg_vs_switch.png")
+    output_dir = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/memory/"
+    output_file = os.path.join(output_dir, "avgCN_vs_switch_rep1.png")
     
     # Make sure output directory exists
     if not os.path.exists(output_dir):
@@ -192,7 +192,7 @@ if __name__ == "__main__":
         print(f"Created output directory: {output_dir}")
     
     # Axis limit
-    axis_limit = 0.2
+    axis_limit = 1
     
     # Generate plot
     print(f"Generating fitness comparison plot (axis limits = ±{axis_limit})...")

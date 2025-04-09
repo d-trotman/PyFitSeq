@@ -1,0 +1,9 @@
+Total strains: 3907
+Mean reads rep1: 13323.620424878423
+Mean reads rep2: 3458.3496288712568
+Pearson correlation: 0.960924170529375
+Spearman correlation: 0.9328777331933067
+Mean % difference: 64.40537691430447
+Median % difference: 56.96381288614298
+Low count strains (< 10 reads): 439
+High count strains (> 1000 reads): 1564

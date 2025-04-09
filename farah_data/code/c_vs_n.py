@@ -5,7 +5,7 @@ import seaborn as sns
 from scipy.stats import pearsonr
 import os
 
-def plot_fitness_comparison(clim_file, nlim_file, output_file, min_fitness=-0.5, axis_limit=0.2):
+def plot_fitness_comparison(clim_file, nlim_file, output_file, min_fitness=-1, axis_limit=1):
     """
     Plot fitness comparison between Clim and Nlim conditions with the origin perfectly centered.
     
@@ -190,25 +190,12 @@ def plot_fitness_comparison(clim_file, nlim_file, output_file, min_fitness=-0.5,
 
 if __name__ == "__main__":
     # File paths
-    clim_file = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/env_specific/results_Clim_rep1_FitSeq.csv"
-    nlim_file = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/env_specific/results_Nlim_rep1_FitSeq.csv"
-    
-    # Check if files exist
-    for file in [clim_file, nlim_file]:
-        if not os.path.exists(file):
-            print(f"Error: File {file} not found.")
-            # Try the other set of files
-            alt_clim_file = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/env_specific/results_Clim_rep1.csv"
-            alt_nlim_file = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/env_specific/results_Nlim_rep1.csv"
-            
-            print(f"Trying alternative files...")
-            clim_file = alt_clim_file
-            nlim_file = alt_nlim_file
-            break
+    clim_file = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/env_specific/results_Clim_rep3_FitSeq.csv"
+    nlim_file = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/env_specific/results_Nlim_rep3_FitSeq.csv"
     
     # Output directory
-    output_dir = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/"
-    output_file = os.path.join(output_dir, "fitness_comparison.png")
+    output_dir = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/memory/"
+    output_file = os.path.join(output_dir, "fitness_comparison_rep3.png")
     
     # Make sure output directory exists
     if not os.path.exists(output_dir):
@@ -219,7 +206,7 @@ if __name__ == "__main__":
     min_fitness = -0.5
     
     # Axis limit
-    axis_limit = 0.2
+    axis_limit = 1
     
     # Generate plot
     print(f"Generating fitness comparison plot (axis limits = ±{axis_limit})...")

@@ -180,13 +180,13 @@ def plot_log_log(clim_file, nlim_file, switch_file, output_file='log_log_plot.pn
 
 if __name__ == "__main__":
     # File paths
-    clim_file = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/env_specific/results_Clim_rep1_FitSeq.csv"
-    nlim_file = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/env_specific/results_Nlim_rep1_FitSeq.csv" 
-    switch_file = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/env_specific/results_Switch_rep1_FitSeq.csv"
+    clim_file = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/env_specific/results_Clim_rep3_FitSeq.csv"
+    nlim_file = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/env_specific/results_Nlim_rep3_FitSeq.csv" 
+    switch_file = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/env_specific/results_Switch_rep3_FitSeq.csv"
     
     # Output directory
-    output_dir = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/"
-    output_file = os.path.join(output_dir, "delta_vs_nonadditivity_loglog.png")
+    output_dir = "/Users/dawsontrotman/Documents/GitHub/PyFitSeq/farah_data/outputs/memory/"
+    output_file = os.path.join(output_dir, "delta_vs_nonadditivity_loglog_rep3.png")
     
     # Make sure output directory exists
     if not os.path.exists(output_dir):
