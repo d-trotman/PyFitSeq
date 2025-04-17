@@ -36,6 +36,8 @@ plt.show()
 
 #%%
 def plot_3combs(data,low_thr):
+    # Plots all three combinations of three replicates against each other, 
+    # not including fitness less than low_thr
     
     # Create all pairwise combinations
     combinations = list(itertools.combinations(data.items(), 2))
@@ -72,7 +74,7 @@ def plot_3combs(data,low_thr):
         
 
 
-#%%
+#%% Plot all replicates:
 
 low_thr = -0.5
 
@@ -98,4 +100,56 @@ plot_3combs(nlims,low_thr)
 plot_3combs(clims,low_thr)
 plot_3combs(switch,low_thr)
 
+#%% Most correlated fitnesses: Clim 1/3, Nlim 2/3, Switch 1/2
+# Average only these pairs, then make a data frame including those averages:
+
+Clim_ave = np.mean([Clim1_fit.index, Clim3_fit.index],0)
+Nlim_ave = np.mean([Nlim2_fit.index, Nlim3_fit.index],0)
+switch_ave = np.mean([switch1_fit.index, switch2_fit.index],0)
+
+ave_static = (Clim_ave+Nlim_ave)/2
+fit_diff = np.abs(Clim_ave-Nlim_ave)
+nonadd = np.abs(switch_ave-ave_static)
+
+nonadd_df = pd.DataFrame({'Clim_ave':Clim_ave.tolist(),
+                          'Nlim_ave':Nlim_ave.tolist(),
+                          'switch_ave':switch_ave.tolist(),
+                          'fit_diff':fit_diff.tolist(),
+                          'nonadd':nonadd.tolist()})
+
+# More strict low threshold to exclude anything off:
+low_thr = -0.3
+mask = (nonadd_df['Clim_ave'].values >= low_thr) & \
+       (nonadd_df['Nlim_ave'].values >= low_thr) & \
+       (nonadd_df['switch_ave'].values >= low_thr)
+       
+# Plot C vs. N fitnesses:       
+x = nonadd_df['Clim_ave'][mask]
+y = nonadd_df['Nlim_ave'][mask]
+r, p_value = pearsonr(x, y)
+plt.scatter(x,y,alpha=0.1)
+plt.xlabel('Clim ave')
+plt.ylabel('Nlim ave')
+plt.title(f'r={r:.2f}')
+plt.show()
+
+# Plot average of C,N fitnesses vs. switch fitness:     
+x = (nonadd_df['Clim_ave'][mask]+nonadd_df['Nlim_ave'][mask])/2
+y = nonadd_df['switch_ave'][mask]
+r, p_value = pearsonr(x, y)
+plt.scatter(x,y,alpha=0.1)
+plt.xlabel('static ave')
+plt.ylabel('switch ave')
+plt.title(f'r={r:.2f}')
+plt.show()
+
+# Plot C/N fitness difference vs. non-additivity (switch-C/N ave difference):     
+x = nonadd_df['fit_diff'][mask]
+y = nonadd_df['nonadd'][mask]
+r, p_value = pearsonr(x, y)
+plt.scatter(x,y,alpha=0.1)
+plt.xlabel('fit diff')
+plt.ylabel('nonadditivity')
+plt.title(f'r={r:.2f}')
+plt.show()
 
