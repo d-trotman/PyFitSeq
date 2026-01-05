@@ -1,0 +1,42 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2865
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8080\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+Now let's work on the solve_ivp section of the code. here is the equation::\
+dN_i/dt = N_i(r_i - ((sum j=1 to s of r_j*N_j)/K)\
+where\
+dN_i/dt = change in population size of strain I\
+N_i = population size of strain I\
+r_i = fitness of strain I\
+S = number of distinct strains\
+r_j = fitness of strain j\
+N_j = population size of strain j\
+K = carrying capacity \
+Before doing any coding, just provide an explanation of the approach and the specific code you would generate to implement this. \
+\
+Equation 2: \
+r_avg = sum(r_j*N_j)/sum(N_j)\
+\
+\
+What is the purpose of main.py? How to use it?\
+What does self. Mean?\
+Explain all of the parameters used in run_growth_cycle function \'97 why are they needed\
+When you say \'91growth rates\'92, do you mean dN_i/dt in cells/hour?\
+Explain when the code uses stochastic_bottleneck vs apply_bottleneck?\
+When I run the discrete_multi_cycle.py,  I use python3 -m experiments.discrete_multi_cycle. First, what does python3 -m mean?  Second, what are other ways to run the program?\
+\
+Why are the simulation parameters in simulationConfig different than in DiscreteCycleConfig? It looks like both apply discrete cycles but they do so in different ways?\
+\
+\
+GAACTGAGCGATCTCGTATGCCGTCTTCTGCTTG\
+\
+\
+\
+\
+\
+}
